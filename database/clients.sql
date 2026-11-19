@@ -41,9 +41,11 @@ CREATE TABLE Clients (
     last_name TEXT NOT NULL,
     prefix TEXT,
     suffix TEXT,
-    
+
     primary_phone TEXT NOT NULL,
-    email TEXT -- is allowed to empty, no comma needed at the end of a list
+    secondary_phone TEXT,
+    work_phone TEXT,
+    email TEXT, -- is allowed to empty, no comma needed at the end of a list
     birthday DATE,
 
     street_address TEXT,

@@ -142,11 +142,16 @@ Last Name
 Prefix 
 Suffix
 Primary Phone Number
+Secondary Phone Number
+Work Phone Number
 Email Address 
-Home Address
+Birthday
+Street Address
+City
+State/Province
+Postal Code
+Country
 Mailing Address
-Emergency Contact Name
-Emergency Contact Phone
 
 ---------------------------------
 ------- Connected Records -------
@@ -159,6 +164,7 @@ Packages
 Session Credits
 Client Notes
 Documents
+Emergency Contacts
 
 ---------------------------------
 ------ System Information -------
@@ -204,3 +210,10 @@ What Makes a Good Clients Table?
                         Notice: No NOT NULL, because it's optional.
 : another concept: Why Postal Code is TEXT
 - 29330 isn't a number we're doing math on. And some countries have postal codes like: M5S 1A1 (Canada) which contains letters.
+
+***When I start to think, "What if they have multiple...?"
+Then maybe it needs its own table.
+Eg. Multiple appointments? Own table.
+    Multiple transactions? Own table.
+    Multiple emergency contacts? Own table.
+    Multiple payment methods? Own table.
