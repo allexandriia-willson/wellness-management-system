@@ -210,6 +210,15 @@ What Makes a Good Clients Table?
                         Notice: No NOT NULL, because it's optional.
 : another concept: Why Postal Code is TEXT
 - 29330 isn't a number we're doing math on. And some countries have postal codes like: M5S 1A1 (Canada) which contains letters.
+: another concept: System Fields
+- Date Created/Date Modified/Account Status: aren't entered by the client. They're tracked by the system.
+    - created_date -> DATE -> Required
+    - modified_date -> DATE -> Required
+    - account_status -> DATE -> Required
+    The system should always know:
+        - when a client was created.
+        - when they were last modified.
+        - whether their account is active.
 
 ***When I start to think, "What if they have multiple...?"
 Then maybe it needs its own table.
@@ -217,3 +226,47 @@ Eg. Multiple appointments? Own table.
     Multiple transactions? Own table.
     Multiple emergency contacts? Own table.
     Multiple payment methods? Own table.
+
+Account Status - designing a workflow
+ACTIVE - System determines:
+- membership exists
+- payment current
+- no restrictions
+Result:
+account_status = Active
+
+SUSPENDED - System determines:
+- membership payment declined
+Result:
+account_status = Suspended
+
+** user doesn't decide. the software notices: payment failed, and will update the status automatically.
+
+FROZEN - User determines this.
+A member submits a Freeze Request. User approves it.
+Result:
+account_status = Frozen
+This is primarily a human driven action.
+
+CANCELLED/INACTIVE
+A member submits a Cancellation Request. Or membership is forcfully terminated.
+Result:
+account_status = Cancelled
+
+Membership Status Rules
+Active
+- payments current
+- payment method current
+- membership usable
+Suspended
+- payment declined
+- membership unavilable until resolved
+Frozen
+- requested by client
+- payments paused
+- membership temporarily unavailable
+Cancelled
+- Membership terminated
+- No future billing
+Pending
+- membership created but not activated

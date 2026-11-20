@@ -36,6 +36,7 @@
 -- ********************************************* --
 CREATE TABLE Clients (
     client_id INTEGER PRIMARY KEY AUTOINCREMENT,
+
     first_name TEXT NOT NULL,
     middle_initial TEXT,
     last_name TEXT NOT NULL,
@@ -45,12 +46,17 @@ CREATE TABLE Clients (
     primary_phone TEXT NOT NULL,
     secondary_phone TEXT,
     work_phone TEXT,
-    email TEXT, -- is allowed to empty, no comma needed at the end of a list
+    email TEXT,
+
     birthday DATE,
 
     street_address TEXT,
     city TEXT,
     state_province TEXT,
     postal_code TEXT,
-    country TEXT
+    country TEXT,
+
+    created_date DATE NOT NULL,
+    modified_date DATE NOT NULL,
+    account_status TEXT NOT NULL
 );
